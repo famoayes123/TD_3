@@ -1,0 +1,38 @@
+// la définition suivante des classes erreur et A :
+class erreur
+{ public :
+int num ;
+} ;
+class A
+{ public :
+A(int n)
+{ if (n==1) { erreur er ; er.num = 999 ; throw er ; }
+}
+} ;
+// résultats fournira ce programme utilisant ces deux classes :
+             /*dans f : 999
+             suite main*/   
+#include <iostream>
+using namespace std ;
+main()
+{ void f() ;
+try
+{ f() ;
+}
+catch (erreur er)
+{ cout << "dans main : " << er.num << "\n" ;
+}
+cout << "suite main\n" ;
+} void f()
+{ try
+{ A a(1) ;
+}
+catch (erreur er)
+{ cout << "dans f : " << er.num << "\n" ;
+}}
+/* Dans le constructeur de la classe "A", si l'argument "n" est égal à 1,
+ il crée un objet de la classe "erreur" nommé "er" et lui attribue la valeur 999, 
+ puis il lance une exception de type "erreur" avec cet objet "er" 
+ donc quand La fonction "main" appelle la fonction "f" resultat affiche sera
+             dans f : 999
+             suite main */
