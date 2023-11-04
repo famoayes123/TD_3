@@ -1,0 +1,67 @@
+#include <iostream>
+#include <list>
+#include <cstring>
+
+using namespace std;
+
+class Personne {
+public:
+    Personne(const char* nom, const char* prenom, int age)
+         {
+        strcpy(this->nom,nom);
+        strcpy(this->prenom,prenom);
+        this->age,age;
+    }
+
+    void afficher() const {
+        cout << "nom : " << nom << ", prenom : " << prenom << ", age : " << age << "\n";
+    }
+
+    bool operator<(const Personne& autre) const {
+        int cmp = strcmp(nom, autre.nom);
+        if (cmp != 0) {
+            return cmp < 0;
+        }
+        return strcmp(prenom, autre.prenom) < 0;
+    }
+
+private:
+    char nom[100];
+    char prenom[100];
+    int age;
+};
+
+int main() {
+    list<Personne> personnes;
+
+    int nombre;
+    cout << "veuillez entrer un nombre de personnes : ";
+    cin >> nombre;
+
+    for (int i = 0; i < nombre; i++) {
+        char nom[100];
+        char prenom[100];
+        int age;
+
+        cout << "Personne " << i + 1 << " :\n";
+        cout << "nom : ";
+        cin >> nom;
+        cout << "prenom : ";
+        cin >> prenom;
+        cout << "age : ";
+        cin >> age;
+
+        Personne personne(nom, prenom, age);
+        personnes.push_back(personne);
+    }
+     // pour l'ordre alphabetique j'utilise une methode que je trouve sur le net 
+     
+    personnes.sort();
+    cout << "\nListe triee par ordre alphabetique :\n";
+    int i;
+    for (i=0;i<nombre;i++) {
+        personne.afficher();
+    }
+
+    return 0;
+}
