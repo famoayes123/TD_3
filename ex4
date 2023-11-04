@@ -1,0 +1,25 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+bool recherchedansset(const set<int>& monset, int valeur) {
+    return monset.find(valeur) != monset.end();
+}
+
+int main() {
+    set<int> monset;
+    for (int i = 1; i <= 100; i++) {
+        monset.insert(i);
+    }
+
+    int valeur1 = 42;
+    int valeur2 = 150;
+
+    bool resultat1 = recherchedansset(monset, valeur1);
+    bool resultat2 = recherchedansset(monset, valeur2);
+
+    cout << "Le nombre " << valeur1 << " est present dans l'ensemble : " << (resultat1 ? "Oui" : "Non") << endl;
+    cout << "Le nombre " << valeur2 << " est present dans l'ensemble : " << (resultat2 ? "Oui" : "Non") << endl;
+
+    return 0;
+}
