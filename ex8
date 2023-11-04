@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std; 
+  // template  
+template <class T>
+    T carre(T valeur) {
+    return valeur * valeur;
+}
+  // les  Exemples 1:entier 2:reele
+int main() {
+    int entier = 2;
+    cout << "Le carre de " << entier << " est " << carre(entier) <<endl;
+    float reele = 2.2;
+    cout << "Le carre de " << reele << " est " << carre(reele) <<endl;
+    return 0;
+}
