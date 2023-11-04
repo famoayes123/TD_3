@@ -1,0 +1,24 @@
+// On a défini la Template de classes suivant :
+#include <iostream>
+
+template <class T> class point
+{ T x, y ; // coordonnees
+public :
+point (T abs, T ord) { x = abs ; y = ord ; }
+void affiche () ;
+} ;
+template <class T> void point<T>::affiche ()
+{ 
+cout << "Coordonnees : " << x << " " << y << "\n" ;
+}
+/* a.Comme char est un type de caractère, il y a une conversion implicite de ces entiers en caractères ASCII correspondants.
+ Donc, 60 est le caractère < et 65 est le caractère A en ASCII.
+
+Lorsque vous appelez p.affiche(), il affiche "Coordonnees : < A"*/
+
+
+/* b. pour que p.affiche() affiche les valeurs numériques 60 et 65 au lieu des caractères correspondants,
+ vous devrez déclarer p comme suivant :
+                 point <int> p (60, 65) ;
+                 p.affiche () ;
+ declarer p avec type int au lieu de type char */
