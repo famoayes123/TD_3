@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Complexe {
+public:
+    double reelle;
+    double imaginaire;
+
+    Complexe(double re, double im) : reelle(re), imaginaire(im) {}
+
+    Complexe operator+(Complexe autre) {
+        return Complexe(reelle + autre.reelle, imaginaire + autre.imaginaire);
+    }
+
+    Complexe operator-(Complexe autre) {
+        return Complexe(reelle - autre.reelle, imaginaire - autre.imaginaire);
+    }
+
+    Complexe operator*(Complexe autre) {
+        double nouvelle_reelle = (reelle * autre.reelle) - (imaginaire * autre.imaginaire);
+        double nouvelle_imaginaire = (reelle * autre.imaginaire) + (imaginaire * autre.reelle);
+        return Complexe(nouvelle_reelle, nouvelle_imaginaire);
+    }
+
+    Complexe operator/(Complexe autre) {
+        double denominateur = autre.reelle * autre.reelle + autre.imaginaire * autre.imaginaire;
+        double nouvelle_reelle = (reelle * autre.reelle + imaginaire * autre.imaginaire) / denominateur;
+        double nouvelle_imaginaire = (imaginaire * autre.reelle - reelle * autre.imaginaire) / denominateur;
+        return Complexe(nouvelle_reelle, nouvelle_imaginaire);
+    }
+
+};
+
+int main() {
+    cout << "Operations sur les nombres complexes" << endl;
+
+    double reelle1, imaginaire1, reelle2, imaginaire2;
+
+    cout << "Entrez les parties reelle et imaginaire du premier nombre complexe:" << endl;
+    cout << "Partie reelle : ";
+    cin >> reelle1;
+    cout << "Partie imaginaire : ";
+    cin >> imaginaire1;
+
+    cout << "Entrez les parties reelle et imaginaire du deuxieme nombre complexe:" << endl;
+    cout << "Partie reelle : ";
+    cin >> reelle2;
+    cout << "Partie imaginaire : ";
+    cin >> imaginaire2;
+
+    Complexe complexe1(reelle1, imaginaire1);
+    Complexe complexe2(reelle2, imaginaire2);
+
+    int choix;
+    Complexe addition = complexe1 + complexe2;
+    Complexe soustraction = complexe1 - complexe2;
+    Complexe multiplication = complexe1 * complexe2;
+    Complexe division = complexe1 / complexe2;
+
+    cout << "Resultat de l'operation :" << endl;
+    cout << "Addition : " << addition.reelle << " + " << addition.imaginaire << "i" <<endl;
+    cout << "Soustraction : " << soustraction.reelle << " + " << soustraction.imaginaire << "i" <<endl;
+    cout << "Multiplication : " << multiplication.reelle << " + " << multiplication.imaginaire << "i" <<endl;
+    cout << "Division : " << division.reelle << " + " << division.imaginaire << "i" <<endl;
+    return 0;
+}
